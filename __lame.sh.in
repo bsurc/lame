@@ -1,0 +1,48 @@
+#!/usr/bin/echo "Don't execute this file. *source* this file."
+
+# module needs to not be aliased for the function declaration below,
+# otherwise it will loop recursively.
+
+if [[ $(type -t module) == "alias" ]] 
+then 
+    unalias module
+fi
+
+
+# Declare __lame if it is not already declared
+
+if [[ $(type -t __lame) != "function" ]] 
+then
+
+    function __lame()
+    {
+       # Capture information about invocation
+        __lame_date=$(date -u +(%Y-%m-%d %H:%M:%S))
+        __lame_user=$(whoami)
+        __lame_host=$(hostname)
+        __lame_command=$@
+
+        # Generate the log entry
+        printf "%s:%s:%s:%s\n" \
+               "${__lame_date}" \
+               "${__lame_user}" \
+               "${__lame_host}" \
+               "${__lame_command}" \
+               >> __LAME_LOGFILE
+
+        # Done logging, so run the actual module command
+        module "$@"
+    }
+
+fi
+
+
+# If __lame gets unset in the shell, running this script again will restore it. 
+
+if [[ $(type -t module) != "alias" ]] 
+then
+
+    alias module="__lame"
+
+fi
+
