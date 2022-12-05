@@ -11,6 +11,8 @@ install:
 	@test -n "${LAME_LOGFILE}"
 	@echo "checking LAME_INSTALL_DIR=${LAME_INSTALL_DIR}"
 	@test -n "${LAME_INSTALL_DIR}"
+	mkdir -p $$(dirname ${LAME_LOGFILE})
+	touch ${LAME_LOGFILE}
 	sed -e "s#__LAME_LOGFILE#${LAME_LOGFILE}#g" < __lame.sh.in \
 	| sed -e "s#__LAME_INSTALL_DIR#${LAME_INSTALL_DIR}#g" > __lame.sh 
 	[[ -x ${LAME_INSTALL_DIR} ]] || mkdir -p ${LAME_INSTALL_DIR}
