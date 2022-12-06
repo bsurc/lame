@@ -23,12 +23,14 @@ then
         __lame_command=$@
 
         # Generate the log entry
-        printf "%s:%s:%s:%s\n" \
-               "${__lame_date}" \
-               "${__lame_user}" \
-               "${__lame_host}" \
-               "${__lame_command}" \
-               >> __LAME_LOGFILE
+        # printf "%s:%s:%s:%s\n" \
+        #        "${__lame_date}" \
+        #        "${__lame_user}" \
+        #        "${__lame_host}" \
+        #        "${__lame_command}" \
+        #        >> /cm/shared/software/var/log/module
+
+        logger -p user.info "<<<${__lame_user}>>> : ${__lame_command}" -t module  
 
         # Done logging, so run the actual module command
         module "$@"
@@ -45,4 +47,3 @@ then
     alias module="__lame"
 
 fi
-
