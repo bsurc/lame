@@ -4,3 +4,5 @@ A script to intercept the 'module' command and log each invocation for later aud
 
 Tested successfully on both TCL module and LMOD environments, and doesn't break tab completion.
 
+Add the following to /etc/rsyslog.conf to enable logging:
+`:programname, isequal, "module" /var/log/module.log`
