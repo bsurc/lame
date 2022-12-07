@@ -5,4 +5,5 @@ module(load="imtcp")
 input(type="imtcp" port="514")
 
 # catch all messages tagged with "module" and send them here
-:programname, isequal, "module" /var/log/remote/module.log
+# :programname, isequal, "module" /var/log/remote/module.log
+:programname, isequal, "module" __LAME_LOGFILE

@@ -1,0 +1,5 @@
+# lame_client.conf
+
+# Send any messages tagged as 'module' to loghost
+# if $programname=="module" then @@r2-cpu-13:514
+if $programname=="module" then @@__LAME_LOGHOST:514
