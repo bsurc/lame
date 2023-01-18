@@ -26,7 +26,7 @@ install-local:
 	@echo ". ${LAME_INSTALL_DIR}/__lame.sh" 
 	@echo
 
-install-rsyslog: 
+install-rsyslog-local: 
 	@echo "checking LAME_LOGFILE=${LAME_LOGFILE}"
 	@test -n "${LAME_LOGFILE}"
 	@echo "checking LAME_INSTALL_DIR=${LAME_INSTALL_DIR}"
@@ -42,6 +42,9 @@ install-rsyslog:
 #	sed -e "s#__LAME_LOGHOST#${LAME_LOGHOST}#g" < etc/rsyslog.d/lame_client.conf.in > etc/rsyslog.d/lame_client.conf
 	@echo "Add the following to your .bashrc: "
 	@echo ". ${LAME_INSTALL_DIR}/__lame.sh" 
+	@echo
+	@echo "Copy the following to /etc/rsyslog.d/: "
+	@echo "etc/rsyslog.d/lame_local.conf"
 	@echo
 
 
@@ -62,7 +65,12 @@ install-rsyslog-remote:
 	@echo "Add the following to your .bashrc: "
 	@echo ". ${LAME_INSTALL_DIR}/__lame.sh" 
 	@echo
+	@echo "Copy the following to /etc/rsyslog.d/: "
+	@echo "On client: etc/rsyslog.d/lame_client.conf"
+	@echo "On server: etc/rsyslog.d/lame_server.conf"
 
 clean:
-	rm ${LAME_INSTALL_DIR}/__lame.sh
-	rm etc/rsyslog.d/lame_[local,client,server].conf
+	rm -f ${LAME_INSTALL_DIR}/__lame.sh
+	rm -f etc/rsyslog.d/lame_local.conf
+	rm -f etc/rsyslog.d/lame_client.conf
+	rm -f etc/rsyslog.d/lame_server.conf

@@ -7,7 +7,7 @@ Tested on both TCL module and LMOD environments, and preserves tab completion.
 Can be installed one of three ways:
 
 - local: will log locally to a file
-- rsyslog: will intergrate with rsyslog system logger (requires admin privileges)
+- rsyslog-local: will intergrate with rsyslog system logger (requires admin privileges)
 - rsyslog-remote: integrate with rsyslog and write logs to remote logserver
 
 First declare environment vars LAME_LOGFILE, LAME_INSTALL_DIR, and LAME_LOGHOST (if using remote logging). Then one of:
@@ -16,7 +16,7 @@ First declare environment vars LAME_LOGFILE, LAME_INSTALL_DIR, and LAME_LOGHOST 
 
 -- or --
 
-`$ make install-rsyslog`
+`$ make install-rsyslog-local`
 
 -- or --
 
