@@ -17,7 +17,7 @@ then
     function __lame()
     {
        # Capture information about invocation
-        __lame_date=$(date -u +(%Y-%m-%d %H:%M:%S))
+        __lame_date=$(date -u '+(%Y-%m-%d %H:%M:%S)')
         __lame_user=$(whoami)
         __lame_host=$(hostname)
         __lame_command=$@
