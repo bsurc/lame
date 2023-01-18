@@ -1,0 +1,4 @@
+export LAME_LOGFILE=/lfs/software/var/log/module
+export LAME_INSTALL_DIR=/lfs/software/lame
+export LAME_LOGHOST=ondemand
+
