@@ -1,0 +1,5 @@
+# lame_local.conf
+
+# Save any messages tagged as 'module' locally
+# if $programname=="module" then /var/log/module.log
+if $programname=="module" then __LAME_LOGFILE

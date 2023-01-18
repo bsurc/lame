@@ -17,21 +17,13 @@ then
     function __lame()
     {
        # Capture information about invocation
-        __lame_date=$(date -u '+(%Y-%m-%d %H:%M:%S)')
+        __lame_date=$(date -u +(%Y-%m-%d %H:%M:%S))
         __lame_user=$(whoami)
         __lame_host=$(hostname)
         __lame_command=$@
 
         # Generate the log entry
-        printf "%s:%s:%s:%s\n" \
-               "${__lame_date}" \
-               "${__lame_user}" \
-               "${__lame_host}" \
-               "${__lame_command}" \
-               >> __LAME_LOGFILE
-
-        # This if for rsyslog version
-        # logger -p user.info -t module "<<<${__lame_user}@${__lame_host}>>> : ${__lame_command}"
+        logger -p user.info -t module "<<<${__lame_user}@${__lame_host}>>> : ${__lame_command}"
 
         # Done logging, so run the actual module command
         module "$@"
