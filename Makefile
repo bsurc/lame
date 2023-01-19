@@ -3,9 +3,11 @@ help:
 	@echo "usage:"
 	@echo "       export LAME_LOGFILE=/path/to/var/log/module"
 	@echo "       export LAME_INSTALL_DIR=/path/to/__lame.sh"
-	@echo "       make install"
+	@echo "       make install-local"
 	@echo "       or "
-	@echo "       make install-rsyslog"
+	@echo "       make install-rsyslog-local"
+	@echo "       or "
+	@echo "       make install-rsyslog-remote"
 	@echo
 
 install: install-local
