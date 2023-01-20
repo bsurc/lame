@@ -39,7 +39,10 @@ Edit log file path as desired, then copy generated `etc/rsyslog.d/lame_server.co
 Edit logserver name as desired, then copy generated `etc/rsyslog.d/lame_client.conf` to `/etc/rsyslog.d/lame_client.conf`
 
 After adding the .conf files, restart the syslog service:
+
+```
 # systemctl stop rsyslog.service
 # systemctl start rsyslog.service
+```
 
 Note that you may need to configure your firewall to allow messages to pass from the client to the server.
